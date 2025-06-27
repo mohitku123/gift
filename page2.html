@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    img {
+      margin-top: 20px;
+      width: 250px;
+      height: auto;
+      border: 5px solid white;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #ff69b4;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      border: none;
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <h1 id="welcome">Welcome!</h1>
+  <img id="userImage" src="" alt="Your uploaded photo" />
+  <p>Thank you for your efforts.</p>
+  <p>Regards, Mohit Chambiyal</p>
+  <button onclick="goNext()">Next</button>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    if (name) {
+      document.getElementById("welcome").textContent = `Welcome, ${name}! ❤️`;
+    }
+    const imageData = localStorage.getItem("userImage");
+    if(imageData) {
+      document.getElementById("userImage").src = imageData;
+    }
+    function goNext() {
+      window.location.href = `page3.html?name=${encodeURIComponent(name)}`;
+    }
+  </script>
+</body>
+</html>
